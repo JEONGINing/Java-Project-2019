@@ -1,19 +1,23 @@
+package pj;
+
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Color;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class Logic {
+
+public class Logicu {
 	private static Menu slide1;
 	private static Map slide2;
 
 	public static void main(String[] args) {
-		// µÎ ½½¶óÀÌµå »ı¼º. Ã³À½¿¡´Â slide1À» º¸ÀÌ°Ô ÇÔ.
+		// ë‘ ìŠ¬ë¼ì´ë“œ ìƒì„±. ì²˜ìŒì—ëŠ” slide1ì„ ë³´ì´ê²Œ í•¨.
 		slide1 = new Menu();
 		slide2 = new Map();
 		slide1.setVisible(true);
@@ -21,64 +25,64 @@ public class Logic {
 	}
 
 	public static void switchSlide() {
-		// ½½¶óÀÌµå¸¦ ¹Ù²ã¼­ º¸ÀÌ°Ô ÇÔ.
+		// ìŠ¬ë¼ì´ë“œë¥¼ ë°”ê¿”ì„œ ë³´ì´ê²Œ í•¨.
 		slide1.setVisible(slide1.isVisible() ? false : true);
 		slide2.setVisible(slide2.isVisible() ? false : true);
 	}
 }
 
 class Menu extends JFrame implements ActionListener {
-	// °¡·Î, ¼¼·Î ±æÀÌ¿¡ ´ëÇÑ »ó¼ö.
+	// ê°€ë¡œ, ì„¸ë¡œ ê¸¸ì´ì— ëŒ€í•œ ìƒìˆ˜.
 	public static final int WIDTH = 400;
 	public static final int HEIGHT = 600;
-	// º¯¼ö.
-	private int score; // Á¡¼ö.
-	private JLabel title; // °ÔÀÓ Á¦¸ñ.
-	private JLabel scoreLabel; // Á¡¼ö Ç¥½ÃÃ¢.
-	private JLabel team; // Á¶ ÀÌ¸§
-	private JPanel menuBar; // ¸Ş´º¸¦ ´ãÀ» panel.
-	private JPanel buttonPanel[]; // ¹öÆ°À» ´ãÀ» panel, button¿¡ ¸¶ÁøÀ» ÁÖ±âÀ§ÇØ »ç¿ë.
-	private JButton stageButton[]; // ¹öÆ°.
+	// ë³€ìˆ˜.
+	private int score; // ì ìˆ˜.
+	private JLabel title; // ê²Œì„ ì œëª©.
+	private JLabel scoreLabel; // ì ìˆ˜ í‘œì‹œì°½.
+	private JLabel team; // ì¡° ì´ë¦„
+	private JPanel menuBar; // ë©”ë‰´ë¥¼ ë‹´ì„ panel.
+	private JPanel buttonPanel[]; // ë²„íŠ¼ì„ ë‹´ì„ panel, buttonì— ë§ˆì§„ì„ ì£¼ê¸°ìœ„í•´ ì‚¬ìš©.
+	private JButton stageButton[]; // ë²„íŠ¼.
 
 	public Menu() {
-		// JFrame ¼³Á¤.
+		// JFrame ì„¤ì •.
 		setSize(WIDTH, HEIGHT);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setTitle("³×¸ğ³×¸ğ ·ÎÁ÷");
+		setTitle("ë„¤ëª¨ë„¤ëª¨ ë¡œì§");
 		setLayout(new BorderLayout());
 
-		// JLabel title »ı¼º, JFrameÀÇ BorderLayout.NORTH¿¡ add.
-		title = new JLabel("³×¸ğ³×¸ğ ·ÎÁ÷");
+		// JLabel title ìƒì„±, JFrameì˜ BorderLayout.NORTHì— add.
+		title = new JLabel("ë„¤ëª¨ë„¤ëª¨ ë¡œì§");
 		add(title, BorderLayout.NORTH);
 
 		/*
-		 * JLabel scoreLabel »ı¼º, JFrameÀÇ BorderLayout.SOUTH¿¡ add. scoreLabel = new
+		 * JLabel scoreLabel ìƒì„±, JFrameì˜ BorderLayout.SOUTHì— add. scoreLabel = new
 		 * JLabel("Score : "); add(scoreLabel, BorderLayout.SOUTH);
 		 */
 
-		// JLabel team »ı¼º, JFrameÀÇ BorderLayout.SOUTH¿¡ add.
-		team = new JLabel("JAVA ÇÁ·Î±×·¡¹Ö 2Á¶ - ÃÖ±â¶ô, È²Á¤ÀÎ, ±èÇöÀ¯, ¹ÚÁ¾¿ø");
+		// JLabel team ìƒì„±, JFrameì˜ BorderLayout.SOUTHì— add.
+		team = new JLabel("JAVA í”„ë¡œê·¸ë˜ë° 2ì¡° - ìµœê¸°ë½, í™©ì •ì¸, ê¹€í˜„ìœ , ë°•ì¢…ì›");
 		add(team, BorderLayout.SOUTH);
 
-		// JPanel menuBar »ı¼º, GridLayout(3,3).
+		// JPanel menuBar ìƒì„±, GridLayout(3,3).
 		JPanel menuBar = new JPanel();
 		menuBar.setLayout(new GridLayout(3, 3));
 
 		stageButton = new JButton[3 * 3];
 		for (int i = 1; i < 9; i++) {
-			// JPanel buttonPanel[i]ÀÇ °´Ã¼ »ı¼º, BorderLayout.
+			// JPanel buttonPanel[i]ì˜ ê°ì²´ ìƒì„±, BorderLayout.
 			menuBar.add(stageButton[i] = new JButton("Stage" + i));
-			// JButton stageButton[i]ÀÇ °´Ã¼ »ı¼º, BorderLayout.CENTER¿¡ add.
+			// JButton stageButton[i]ì˜ ê°ì²´ ìƒì„±, BorderLayout.CENTERì— add.
 			stageButton[i].addActionListener(this);
 		}
-		// menuBarÀ» JFramedml BorderLayout.CENTER¿¡ add.
+		// menuBarì„ JFramedml BorderLayout.CENTERì— add.
 		this.add(menuBar, BorderLayout.CENTER);
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		// slide2·Î ÀüÈ¯.
-		Logic.switchSlide();
-		// slide2ÀÇ stage Á¤º¸¸¦ Á¤ÇØÁÜ(setStage)
+		// slide2ë¡œ ì „í™˜.
+		Logicu.switchSlide();
+		// slide2ì˜ stage ì •ë³´ë¥¼ ì •í•´ì¤Œ(setStage)
 	}
 
 	public void scoreAugment() {
@@ -87,41 +91,42 @@ class Menu extends JFrame implements ActionListener {
 }
 
 class Map extends JFrame {
-	// °¡·Î, ¼¼·Î ±æÀÌ¿¡ ´ëÇÑ »ó¼ö.
+	// ê°€ë¡œ, ì„¸ë¡œ ê¸¸ì´ì— ëŒ€í•œ ìƒìˆ˜.
 	public static final int WIDTH = 400;
 	public static final int HEIGHT = 600;
 	public static final int MAX_STAGE = 8;
 	public static final int ROW = 5;
 	public static final int COL = 5;
 
-	// º¯¼ö.
-	private int answer[][][]; // °¢ ½ºÅ×ÀÌÁö¿¡ ´ëÇÑ ÇØ´äÀ» ´ã°í ÀÖ´Â ¹è¿­.
-	private int user[][]; // ½ºÅ×ÀÌÁö¿¡ ´ëÇÑ À¯ÀúÀÇ ´äÀ» ´ã°í ÀÖ´Â ¹è¿­.
-	private int hint[][]; // ¸Ê ¿·¿¡ Ç¥½ÃµÇ´Â ÈùÆ®µéÀÇ Á¤º¸¸¦ ´ã°í ÀÖ´Â ¹è¿­.
-	private int stage; // ¸î ½ºÅ×ÀÌÁöÀÎÁö ÀúÀå.
-	private JLabel stageLabel; // Á¦¸ñ¶õ¿¡ ½ºÅ×ÀÌÁö¸¦ Ç¥½ÃÇÔ.
-	private JPanel mapPanel; // °ÔÀÓ Ã¢À» ´ã´Â Panel.
-	private JPanel submitPanel; // submit ¹öÆ°À» ´ã´Â Panel.
-	private JButton gridButton[][]; // °ÔÀÓ ¹öÆ°.
-	private JButton submitButton; // Á¦Ãâ ¹öÆ°.
+	// ë³€ìˆ˜.
+	private int answer[][][]; // ê° ìŠ¤í…Œì´ì§€ì— ëŒ€í•œ í•´ë‹µì„ ë‹´ê³  ìˆëŠ” ë°°ì—´.
+	private int user[][]; // ìŠ¤í…Œì´ì§€ì— ëŒ€í•œ ìœ ì €ì˜ ë‹µì„ ë‹´ê³  ìˆëŠ” ë°°ì—´.
+	private int hint[][]; // ë§µ ì˜†ì— í‘œì‹œë˜ëŠ” íŒíŠ¸ë“¤ì˜ ì •ë³´ë¥¼ ë‹´ê³  ìˆëŠ” ë°°ì—´.
+	private int stage; // ëª‡ ìŠ¤í…Œì´ì§€ì¸ì§€ ì €ì¥.
+	private JLabel stageLabel; // ì œëª©ë€ì— ìŠ¤í…Œì´ì§€ë¥¼ í‘œì‹œí•¨.
+	private JPanel mapPanel; // ê²Œì„ ì°½ì„ ë‹´ëŠ” Panel.
+	private JPanel submitPanel; // submit ë²„íŠ¼ì„ ë‹´ëŠ” Panel.
+	private JPanel buttonPanel;
+	private JButton gridButton[][]; // ê²Œì„ ë²„íŠ¼.
+	private JButton submitButton; // ì œì¶œ ë²„íŠ¼.
 
 	public Map() {
-		// JFrame ¼³Á¤.
+		// JFrame ì„¤ì •.
 		setSize(WIDTH, HEIGHT);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Visibility Demonstration");
 		setLayout(new BorderLayout());
 
 		gridButton = new JButton[ROW][];
-		answer = new int[MAX_STAGE][ROW][COL]; // Answer °´Ã¼ »ı¼º. ³»¿ë Ã¤¿ö¾ßÇÕ´Ï´Ù.
+		answer = new int[MAX_STAGE][ROW][COL]; // Answer ê°ì²´ ìƒì„±. ë‚´ìš© ì±„ì›Œì•¼í•©ë‹ˆë‹¤.
 		user = new int[ROW][COL];
-		hint = new int[MAX_STAGE][ROW + COL]; // hint °´Ã¼ »ı¼º. hintÀÇ Á¤º¸´Â ´ÙÀ½°ú °°ÀÌ Ã¤¿ö³ÖÀ¸¸é µË´Ï´Ù!
+		hint = new int[MAX_STAGE][ROW + COL]; // hint ê°ì²´ ìƒì„±. hintì˜ ì •ë³´ëŠ” ë‹¤ìŒê³¼ ê°™ì´ ì±„ì›Œë„£ìœ¼ë©´ ë©ë‹ˆë‹¤!
 		/*
-		 * ÆÄ¿öÆ÷ÀÎÆ®¿¡ ÀÖ´Â ¸ÊÀ» ±âÁØÀ¸·Î »ó´Ü¿¡ Ç¥½ÃµÈ hint¸¦ ¿ŞÂÊºÎÅÍ ¸ÕÀú ÀúÀåÇÏ°í, ÀÌÈÄ¿¡ ÁÂÃøÀÇ hint¸¦ ÀúÀåÇÕ´Ï´Ù. µû¶ó¼­
-		 * hint¹è¿­ÀÇ col ¼ö´Â ROW+COLÀÌ µË´Ï´Ù. ÀÌ·± ¹æÇâÀ¸·Î ÇÏ´Â ÀÌÀ¯´Â for¹®¿¡ ´ëÀÀÇÏ±â ½±±â ¶§¹®ÀÔ´Ï´Ù. ÇÏ³ªÀÇ hint¿¡´Â
-		 * ¿©·¯ Á¤º¸°¡ Æ÷ÇÔµÉ ¼ö ÀÖ½À´Ï´Ù. ÀÌ·± °æ¿ì ÆíÀÇ»ó Å¬·¡½º¸¦ »ç¿ëÇÏÁö ¾Ê°í ÀÚ¸´¼ö·Î ±¸ºĞÇÏ¿© ¾¹´Ï´Ù. ¿¹¸¦ µé¾î hint[0][0]ÀÇ
-		 * Á¤º¸°¡ (1, 1)ÀÌ¶ó°í ÇÑ´Ù¸é hint¹è¿­¿¡´Â ÀÚ¸´¼ö·Î ±¸ºĞÇØ 11À» ÀúÀåÇÕ´Ï´Ù. ÀÌ¸¦ Àû¿ëÇØ ÆÄ¿öÆ÷ÀÎÆ®ÀÇ ¸Ê¿¡ ´ëÇÑ hintÁ¤º¸¸¦
-		 * ÀúÀåÇÑ´Ù¸é hint[2]={31,12,12,31,11,4,12,11,2,5}°¡ µË´Ï´Ù.
+		 * íŒŒì›Œí¬ì¸íŠ¸ì— ìˆëŠ” ë§µì„ ê¸°ì¤€ìœ¼ë¡œ ìƒë‹¨ì— í‘œì‹œëœ hintë¥¼ ì™¼ìª½ë¶€í„° ë¨¼ì € ì €ì¥í•˜ê³ , ì´í›„ì— ì¢Œì¸¡ì˜ hintë¥¼ ì €ì¥í•©ë‹ˆë‹¤. ë”°ë¼ì„œ
+		 * hintë°°ì—´ì˜ col ìˆ˜ëŠ” ROW+COLì´ ë©ë‹ˆë‹¤. ì´ëŸ° ë°©í–¥ìœ¼ë¡œ í•˜ëŠ” ì´ìœ ëŠ” forë¬¸ì— ëŒ€ì‘í•˜ê¸° ì‰½ê¸° ë•Œë¬¸ì…ë‹ˆë‹¤. í•˜ë‚˜ì˜ hintì—ëŠ”
+		 * ì—¬ëŸ¬ ì •ë³´ê°€ í¬í•¨ë  ìˆ˜ ìˆìŠµë‹ˆë‹¤. ì´ëŸ° ê²½ìš° í¸ì˜ìƒ í´ë˜ìŠ¤ë¥¼ ì‚¬ìš©í•˜ì§€ ì•Šê³  ìë¦¿ìˆ˜ë¡œ êµ¬ë¶„í•˜ì—¬ ì”ë‹ˆë‹¤. ì˜ˆë¥¼ ë“¤ì–´ hint[0][0]ì˜
+		 * ì •ë³´ê°€ (1, 1)ì´ë¼ê³  í•œë‹¤ë©´ hintë°°ì—´ì—ëŠ” ìë¦¿ìˆ˜ë¡œ êµ¬ë¶„í•´ 11ì„ ì €ì¥í•©ë‹ˆë‹¤. ì´ë¥¼ ì ìš©í•´ íŒŒì›Œí¬ì¸íŠ¸ì˜ ë§µì— ëŒ€í•œ hintì •ë³´ë¥¼
+		 * ì €ì¥í•œë‹¤ë©´ hint[2]={31,12,12,31,11,4,12,11,2,5}ê°€ ë©ë‹ˆë‹¤.
 		 * 
 		 */
 		for (int i = 0; i < ROW; i++) {
@@ -129,23 +134,44 @@ class Map extends JFrame {
 			for (int j = 0; j < COL; j++) {
 				gridButton[i][j] = new JButton();
 				gridButton[i][j].setActionCommand(i + "" + j);
+				gridButton[i][j].addActionListener(new Grid());
 			}
 		}
 
-		// JLabel stageLabel »ı¼º, JFrameÀÇ BorderLayout.NORTH¿¡ add.
+		// JLabel stageLabel ìƒì„±, JFrameì˜ BorderLayout.NORTHì— add.
 		stageLabel = new JLabel("Stage");
 		add(stageLabel, BorderLayout.NORTH);
-		// JPanel submitPanel »ı¼º, BorderLayout.
+		// JPanel submitPanel ìƒì„±, BorderLayout.
 		JPanel submitPanel = new JPanel();
 		add(submitPanel, BorderLayout.NORTH);
-		// JButton submitButton »ı¼º. submitPanel¿¡ add.
+		// JButton submitButton ìƒì„±. submitPanelì— add.
+		JButton submitButton= new JButton("Submit");
+		submitButton.addActionListener(new Submit());
+		submitPanel.add(submitButton);
 
-		// submitPanelÀ» JFrameÀÇ BorderLayout.SOUTH¿¡ add.
+		// submitPanelì„ JFrameì˜ BorderLayout.SOUTHì— add.
+		add(submitPanel, BorderLayout.SOUTH);
 
-		// JPanel menuBar »ı¼º, GridLayout(6,6).
+		// JPanel menuBar ìƒì„±, GridLayout(6,6).
 		JPanel menuBar = new JPanel();
 		menuBar.setLayout(new GridLayout(6, 6));
 
+		for(int i=0;i<MAX_STAGE;i++) {
+			for(int j=0;j<ROW;j++) {
+				for(int k=0;k<COL;k++)
+					answer[i][j][k]=0;
+			}
+		}
+		
+		answer[0][1][1]=1;
+		answer[0][1][3]=1;
+		answer[0][2][0]=1;
+		answer[0][2][4]=1;
+		answer[0][3][1]=1;
+		answer[0][3][3]=1;
+		answer[0][4][2]=1;
+		//ì •ë‹µ ë°°ì—´ì„ ë§Œë“¤ì–´ ë‘ê³ , ì…ë ¥ë°›ëŠ” ì •ë‹µë°°ì—´ë„ ë§Œë“¤ì–´ì•¼í•˜ì§€ ì•ŠëŠ”ê°€.
+		
 		int hintcnt = 0;
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 6; j++) {
@@ -161,35 +187,54 @@ class Map extends JFrame {
 				}
 
 			}
+		}//ì—¬ê¸°ì„œ ì“°ì¸ íŒíŠ¸ê°€ ì˜ë¯¸í•˜ëŠ” ë°”ê°€ ë¬´ì—‡ì¸ê°€? 
+		
+		/*buttonPanel=new JPanel();
+		buttonPanel.setLayout(new GridLayout(6,6));
+		
+		for(int i=0;i<ROW;i++) {
+			buttonLabel[i]=new JLabel[COL];
+			for(int j=0;j<COL;j++) {
+				buttonLabel[i][j]=new JLabel();
+				buttonLabel[i][j].add(gridButton[i][j]);
+				buttonPanel.add(buttonLabel[i][j]);
+			}
 		}
-
+		
+		
+		add(buttonPanel,BorderLayout.CENTER);
+		*/
 		add(menuBar, BorderLayout.CENTER);
 	}
 
 	private boolean compareMap() {
-		// submit ¹öÆ°À» ´©¸£¸é answer°ú ºñ±³ÇØ¼­ Á¤´äÀÎÁö ¾Æ´ÑÁö ºñ±³.
-		// Á¤´äÀÌ¶ó¸é slide1ÀÇ scoreAugment()½Ç
+		// submit ë²„íŠ¼ì„ ëˆ„ë¥´ë©´ answerê³¼ ë¹„êµí•´ì„œ ì •ë‹µì¸ì§€ ì•„ë‹Œì§€ ë¹„êµ.
+		// ì •ë‹µì´ë¼ë©´ slide1ì˜ scoreAugment()ì‹¤
 		return true;
 	}
 
 	public void setStage(int s) {
-		// slide1¿¡¼­ 2·Î ³Ñ¾î¿Ã ¶§ stageÁ¤º¸¸¦ ¼³Á¤ÇØÁÜ.
+		// slide1ì—ì„œ 2ë¡œ ë„˜ì–´ì˜¬ ë•Œ stageì •ë³´ë¥¼ ì„¤ì •í•´ì¤Œ.
 	}
 
 	private class Grid implements ActionListener {
 
 		public void actionPerformed(ActionEvent e) {
-			// ¹öÆ°À» ´­·¯ÁáÀ» ¶§, ¹öÆ°ÀÇ ¹è°æÀ» ¹Ù²ãÁÜ.
-			// ¶ÇÇÑ user¹è¿­¿¡ ÀÌ Á¤º¸¸¦ ÀúÀåÇØ¾ß ÇÔ.
+			// ë²„íŠ¼ì„ ëˆŒëŸ¬ì¤¬ì„ ë•Œ, ë²„íŠ¼ì˜ ë°°ê²½ì„ ë°”ê¿”ì¤Œ.
+			gridButton[i][j].setBackground(Color.BLUE);
+			//ë²„íŠ¼ì„ ëˆ„ë¥¼ë•Œ ië‘ jê°’ì„ ë°›ì•„ì™€ì„œ í•´ë‹¹í•˜ëŠ” ë²„íŠ¼ì˜ ìƒ‰ê°ˆì„ ë°”ê¿€ìˆ˜ ìˆê²Œ í•´ì•¼í•¨.
+			// ë˜í•œ userë°°ì—´ì— ì´ ì •ë³´ë¥¼ ì €ì¥í•´ì•¼ í•¨.
+			
 		}
-
 	}
 
 	private class Submit implements ActionListener {
 
 		public void actionPerformed(ActionEvent e) {
-			// submit ¹öÆ°À» ´­·¶À» ¶§ compareMap()À» ½ÇÇàÇØ¼­
-			// slide1ÀÇ scoreÀ» ¹Ù²ãÁÜ.
+			// submit ë²„íŠ¼ì„ ëˆŒë €ì„ ë•Œ compareMap()ì„ ì‹¤í–‰í•´ì„œ
+			// slide1ì˜ scoreì„ ë°”ê¿”ì¤Œ.
+			if(compareMap())
+				score++;//ì ìˆ˜ë¥¼ ë§¨ì²˜ìŒ ì´ˆê¸°í™”ë©´ì—ì„œ ë¶€í„° ì´ ë§µê¹Œì§€ ì‚¬ìš©í•  ìˆ˜ ìˆëŠ” ì „ì—­ë³€ìˆ˜ê°€ í•„ìš”.
 		}
 
 	}
